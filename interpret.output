@@ -1,0 +1,1705 @@
+Terminals unused in grammar
+
+   DOT
+   POSITIVE
+   NEGATIVE
+   THEN
+   VAR
+   NOP
+
+
+State 41 conflicts: 2 shift/reduce
+State 45 conflicts: 1 shift/reduce
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 $@1: %empty
+
+    2 $@2: %empty
+
+    3 $@3: %empty
+
+    4 program: MAINPROG ID SEMI $@1 declarations $@2 subprogram_declarations $@3 compound_statement
+
+    5 declarations: declarations type identifier_list SEMI
+    6             | %empty
+
+    7 identifier_list: ID
+    8                | identifier_list COMA ID
+
+    9 type: standard_type
+   10     | ARRAY LSBRACK INUM RSBRACK OF standard_type
+
+   11 standard_type: INT
+   12              | FLOAT
+
+   13 subprogram_declarations: subprogram_declaration subprogram_declarations
+   14                        | %empty
+
+   15 subprogram_declaration: subprogram_head declarations compound_statement
+
+   16 $@4: %empty
+
+   17 subprogram_head: FUNCTION ID $@4 arguments COLON standard_type SEMI
+
+   18 $@5: %empty
+
+   19 subprogram_head: PROCEDURE ID $@5 arguments SEMI
+
+   20 arguments: LPARENT parameter_list RPARENT
+   21          | %empty
+
+   22 parameter_list: identifier_list COLON type
+   23               | identifier_list COLON type SEMI parameter_list
+
+   24 compound_statement: BBEGIN statement_list END
+
+   25 statement_list: statement
+   26               | statement SEMI statement_list
+
+   27 statement: variable ASSIGNOP expression
+   28          | print_statement
+   29          | procedure_statement
+   30          | compound_statement
+   31          | RETURN expression
+   32          | if_statement
+   33          | while_statement
+   34          | for_statement
+   35          | %empty
+
+   36 print_statement: PRINT
+   37                | PRINT LPARENT expression RPARENT
+
+   38 variable: ID
+   39         | ID LSBRACK expression RSBRACK
+
+   40 procedure_statement: ID LPARENT actual_parameter_expression RPARENT
+
+   41 $@6: %empty
+
+   42 $@7: %empty
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+   44 $@8: %empty
+
+   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE COLON statement RSBRACK
+
+   46 $@9: %empty
+
+   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+
+   48 actual_parameter_expression: %empty
+   49                            | expression_list
+
+   50 expression_list: expression
+   51                | expression COMA expression_list
+
+   52 expression: simple_expression
+   53           | simple_expression RELOP simple_expression
+
+   54 simple_expression: term
+   55                  | term ADDOP simple_expression
+
+   56 term: factor
+   57     | factor MULOP term
+
+   58 factor: INT
+   59       | FLOAT
+   60       | variable
+   61       | procedure_statement
+   62       | NOT factor
+   63       | SIGN factor
+   64       | INUM
+   65       | RNUM
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+ID (258) 4 7 8 17 19 38 39 40
+RNUM (259) 65
+INUM (260) 10 64
+ARRAY (261) 10
+BBEGIN (262) 24
+ELSE (263) 43 45 47
+END (264) 24
+FOR (265) 47
+FUNCTION (266) 17
+IF (267) 43
+INT (268) 11 58
+SEMI (269) 4 5 17 19 23 26
+COMA (270) 8 51
+COLON (271) 17 22 23 43 45 47
+LPARENT (272) 20 37 40 43
+RPARENT (273) 20 37 40 43
+LSBRACK (274) 10 39 43 45 47
+RSBRACK (275) 10 39 43 45 47
+NOT (276) 62
+DOT (277)
+POSITIVE (278)
+NEGATIVE (279)
+ELIF (280) 43
+OF (281) 10
+PROCEDURE (282) 19
+MAINPROG (283) 4
+FLOAT (284) 12 59
+THEN (285)
+VAR (286)
+WHILE (287) 45
+PRINT (288) 36 37
+RETURN (289) 31
+SIGN (290) 63
+IN (291) 47
+NOP (292)
+ADDOP (293) 55
+MULOP (294) 57
+RELOP (295) 53
+ASSIGNOP (296) 27
+
+
+Nonterminals, with rules where they appear
+
+$accept (42)
+    on left: 0
+program (43)
+    on left: 4, on right: 0
+$@1 (44)
+    on left: 1, on right: 4
+$@2 (45)
+    on left: 2, on right: 4
+$@3 (46)
+    on left: 3, on right: 4
+declarations (47)
+    on left: 5 6, on right: 4 5 15
+identifier_list (48)
+    on left: 7 8, on right: 5 8 22 23
+type (49)
+    on left: 9 10, on right: 5 22 23
+standard_type (50)
+    on left: 11 12, on right: 9 10 17
+subprogram_declarations (51)
+    on left: 13 14, on right: 4 13
+subprogram_declaration (52)
+    on left: 15, on right: 13
+subprogram_head (53)
+    on left: 17 19, on right: 15
+$@4 (54)
+    on left: 16, on right: 17
+$@5 (55)
+    on left: 18, on right: 19
+arguments (56)
+    on left: 20 21, on right: 17 19
+parameter_list (57)
+    on left: 22 23, on right: 20 23
+compound_statement (58)
+    on left: 24, on right: 4 15 30
+statement_list (59)
+    on left: 25 26, on right: 24 26
+statement (60)
+    on left: 27 28 29 30 31 32 33 34 35, on right: 25 26 43 45 47
+print_statement (61)
+    on left: 36 37, on right: 28
+variable (62)
+    on left: 38 39, on right: 27 60
+procedure_statement (63)
+    on left: 40, on right: 29 61
+if_statement (64)
+    on left: 43, on right: 32
+$@6 (65)
+    on left: 41, on right: 43
+$@7 (66)
+    on left: 42, on right: 43
+while_statement (67)
+    on left: 45, on right: 33
+$@8 (68)
+    on left: 44, on right: 45
+for_statement (69)
+    on left: 47, on right: 34
+$@9 (70)
+    on left: 46, on right: 47
+actual_parameter_expression (71)
+    on left: 48 49, on right: 40
+expression_list (72)
+    on left: 50 51, on right: 49 51
+expression (73)
+    on left: 52 53, on right: 27 31 37 39 43 45 47 50 51
+simple_expression (74)
+    on left: 54 55, on right: 52 53 55
+term (75)
+    on left: 56 57, on right: 54 55 57
+factor (76)
+    on left: 58 59 60 61 62 63 64 65, on right: 56 57 62 63
+
+
+State 0
+
+    0 $accept: . program $end
+
+    MAINPROG  shift, and go to state 1
+
+    program  go to state 2
+
+
+State 1
+
+    4 program: MAINPROG . ID SEMI $@1 declarations $@2 subprogram_declarations $@3 compound_statement
+
+    ID  shift, and go to state 3
+
+
+State 2
+
+    0 $accept: program . $end
+
+    $end  shift, and go to state 4
+
+
+State 3
+
+    4 program: MAINPROG ID . SEMI $@1 declarations $@2 subprogram_declarations $@3 compound_statement
+
+    SEMI  shift, and go to state 5
+
+
+State 4
+
+    0 $accept: program $end .
+
+    $default  accept
+
+
+State 5
+
+    4 program: MAINPROG ID SEMI . $@1 declarations $@2 subprogram_declarations $@3 compound_statement
+
+    $default  reduce using rule 1 ($@1)
+
+    $@1  go to state 6
+
+
+State 6
+
+    4 program: MAINPROG ID SEMI $@1 . declarations $@2 subprogram_declarations $@3 compound_statement
+
+    $default  reduce using rule 6 (declarations)
+
+    declarations  go to state 7
+
+
+State 7
+
+    4 program: MAINPROG ID SEMI $@1 declarations . $@2 subprogram_declarations $@3 compound_statement
+    5 declarations: declarations . type identifier_list SEMI
+
+    ARRAY  shift, and go to state 8
+    INT    shift, and go to state 9
+    FLOAT  shift, and go to state 10
+
+    $default  reduce using rule 2 ($@2)
+
+    $@2            go to state 11
+    type           go to state 12
+    standard_type  go to state 13
+
+
+State 8
+
+   10 type: ARRAY . LSBRACK INUM RSBRACK OF standard_type
+
+    LSBRACK  shift, and go to state 14
+
+
+State 9
+
+   11 standard_type: INT .
+
+    $default  reduce using rule 11 (standard_type)
+
+
+State 10
+
+   12 standard_type: FLOAT .
+
+    $default  reduce using rule 12 (standard_type)
+
+
+State 11
+
+    4 program: MAINPROG ID SEMI $@1 declarations $@2 . subprogram_declarations $@3 compound_statement
+
+    FUNCTION   shift, and go to state 15
+    PROCEDURE  shift, and go to state 16
+
+    $default  reduce using rule 14 (subprogram_declarations)
+
+    subprogram_declarations  go to state 17
+    subprogram_declaration   go to state 18
+    subprogram_head          go to state 19
+
+
+State 12
+
+    5 declarations: declarations type . identifier_list SEMI
+
+    ID  shift, and go to state 20
+
+    identifier_list  go to state 21
+
+
+State 13
+
+    9 type: standard_type .
+
+    $default  reduce using rule 9 (type)
+
+
+State 14
+
+   10 type: ARRAY LSBRACK . INUM RSBRACK OF standard_type
+
+    INUM  shift, and go to state 22
+
+
+State 15
+
+   17 subprogram_head: FUNCTION . ID $@4 arguments COLON standard_type SEMI
+
+    ID  shift, and go to state 23
+
+
+State 16
+
+   19 subprogram_head: PROCEDURE . ID $@5 arguments SEMI
+
+    ID  shift, and go to state 24
+
+
+State 17
+
+    4 program: MAINPROG ID SEMI $@1 declarations $@2 subprogram_declarations . $@3 compound_statement
+
+    $default  reduce using rule 3 ($@3)
+
+    $@3  go to state 25
+
+
+State 18
+
+   13 subprogram_declarations: subprogram_declaration . subprogram_declarations
+
+    FUNCTION   shift, and go to state 15
+    PROCEDURE  shift, and go to state 16
+
+    $default  reduce using rule 14 (subprogram_declarations)
+
+    subprogram_declarations  go to state 26
+    subprogram_declaration   go to state 18
+    subprogram_head          go to state 19
+
+
+State 19
+
+   15 subprogram_declaration: subprogram_head . declarations compound_statement
+
+    $default  reduce using rule 6 (declarations)
+
+    declarations  go to state 27
+
+
+State 20
+
+    7 identifier_list: ID .
+
+    $default  reduce using rule 7 (identifier_list)
+
+
+State 21
+
+    5 declarations: declarations type identifier_list . SEMI
+    8 identifier_list: identifier_list . COMA ID
+
+    SEMI  shift, and go to state 28
+    COMA  shift, and go to state 29
+
+
+State 22
+
+   10 type: ARRAY LSBRACK INUM . RSBRACK OF standard_type
+
+    RSBRACK  shift, and go to state 30
+
+
+State 23
+
+   17 subprogram_head: FUNCTION ID . $@4 arguments COLON standard_type SEMI
+
+    $default  reduce using rule 16 ($@4)
+
+    $@4  go to state 31
+
+
+State 24
+
+   19 subprogram_head: PROCEDURE ID . $@5 arguments SEMI
+
+    $default  reduce using rule 18 ($@5)
+
+    $@5  go to state 32
+
+
+State 25
+
+    4 program: MAINPROG ID SEMI $@1 declarations $@2 subprogram_declarations $@3 . compound_statement
+
+    BBEGIN  shift, and go to state 33
+
+    compound_statement  go to state 34
+
+
+State 26
+
+   13 subprogram_declarations: subprogram_declaration subprogram_declarations .
+
+    $default  reduce using rule 13 (subprogram_declarations)
+
+
+State 27
+
+    5 declarations: declarations . type identifier_list SEMI
+   15 subprogram_declaration: subprogram_head declarations . compound_statement
+
+    ARRAY   shift, and go to state 8
+    BBEGIN  shift, and go to state 33
+    INT     shift, and go to state 9
+    FLOAT   shift, and go to state 10
+
+    type                go to state 12
+    standard_type       go to state 13
+    compound_statement  go to state 35
+
+
+State 28
+
+    5 declarations: declarations type identifier_list SEMI .
+
+    $default  reduce using rule 5 (declarations)
+
+
+State 29
+
+    8 identifier_list: identifier_list COMA . ID
+
+    ID  shift, and go to state 36
+
+
+State 30
+
+   10 type: ARRAY LSBRACK INUM RSBRACK . OF standard_type
+
+    OF  shift, and go to state 37
+
+
+State 31
+
+   17 subprogram_head: FUNCTION ID $@4 . arguments COLON standard_type SEMI
+
+    LPARENT  shift, and go to state 38
+
+    $default  reduce using rule 21 (arguments)
+
+    arguments  go to state 39
+
+
+State 32
+
+   19 subprogram_head: PROCEDURE ID $@5 . arguments SEMI
+
+    LPARENT  shift, and go to state 38
+
+    $default  reduce using rule 21 (arguments)
+
+    arguments  go to state 40
+
+
+State 33
+
+   24 compound_statement: BBEGIN . statement_list END
+
+    ID      shift, and go to state 41
+    BBEGIN  shift, and go to state 33
+    FOR     shift, and go to state 42
+    IF      shift, and go to state 43
+    WHILE   shift, and go to state 44
+    PRINT   shift, and go to state 45
+    RETURN  shift, and go to state 46
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 47
+    statement_list       go to state 48
+    statement            go to state 49
+    print_statement      go to state 50
+    variable             go to state 51
+    procedure_statement  go to state 52
+    if_statement         go to state 53
+    while_statement      go to state 54
+    for_statement        go to state 55
+
+
+State 34
+
+    4 program: MAINPROG ID SEMI $@1 declarations $@2 subprogram_declarations $@3 compound_statement .
+
+    $default  reduce using rule 4 (program)
+
+
+State 35
+
+   15 subprogram_declaration: subprogram_head declarations compound_statement .
+
+    $default  reduce using rule 15 (subprogram_declaration)
+
+
+State 36
+
+    8 identifier_list: identifier_list COMA ID .
+
+    $default  reduce using rule 8 (identifier_list)
+
+
+State 37
+
+   10 type: ARRAY LSBRACK INUM RSBRACK OF . standard_type
+
+    INT    shift, and go to state 9
+    FLOAT  shift, and go to state 10
+
+    standard_type  go to state 56
+
+
+State 38
+
+   20 arguments: LPARENT . parameter_list RPARENT
+
+    ID  shift, and go to state 20
+
+    identifier_list  go to state 57
+    parameter_list   go to state 58
+
+
+State 39
+
+   17 subprogram_head: FUNCTION ID $@4 arguments . COLON standard_type SEMI
+
+    COLON  shift, and go to state 59
+
+
+State 40
+
+   19 subprogram_head: PROCEDURE ID $@5 arguments . SEMI
+
+    SEMI  shift, and go to state 60
+
+
+State 41
+
+   38 variable: ID .
+   39         | ID . LSBRACK expression RSBRACK
+   40 procedure_statement: ID . LPARENT actual_parameter_expression RPARENT
+
+    LPARENT  shift, and go to state 61
+    LSBRACK  shift, and go to state 62
+
+    LPARENT   [reduce using rule 38 (variable)]
+    LSBRACK   [reduce using rule 38 (variable)]
+    $default  reduce using rule 38 (variable)
+
+
+State 42
+
+   47 for_statement: FOR . expression IN expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression           go to state 71
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 43
+
+   43 if_statement: IF . expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression           go to state 75
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 44
+
+   45 while_statement: WHILE . expression COLON statement $@8 LSBRACK ELSE COLON statement RSBRACK
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression           go to state 76
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 45
+
+   36 print_statement: PRINT .
+   37                | PRINT . LPARENT expression RPARENT
+
+    LPARENT  shift, and go to state 77
+
+    LPARENT   [reduce using rule 36 (print_statement)]
+    $default  reduce using rule 36 (print_statement)
+
+
+State 46
+
+   31 statement: RETURN . expression
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression           go to state 78
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 47
+
+   30 statement: compound_statement .
+
+    $default  reduce using rule 30 (statement)
+
+
+State 48
+
+   24 compound_statement: BBEGIN statement_list . END
+
+    END  shift, and go to state 79
+
+
+State 49
+
+   25 statement_list: statement .
+   26               | statement . SEMI statement_list
+
+    SEMI  shift, and go to state 80
+
+    $default  reduce using rule 25 (statement_list)
+
+
+State 50
+
+   28 statement: print_statement .
+
+    $default  reduce using rule 28 (statement)
+
+
+State 51
+
+   27 statement: variable . ASSIGNOP expression
+
+    ASSIGNOP  shift, and go to state 81
+
+
+State 52
+
+   29 statement: procedure_statement .
+
+    $default  reduce using rule 29 (statement)
+
+
+State 53
+
+   32 statement: if_statement .
+
+    $default  reduce using rule 32 (statement)
+
+
+State 54
+
+   33 statement: while_statement .
+
+    $default  reduce using rule 33 (statement)
+
+
+State 55
+
+   34 statement: for_statement .
+
+    $default  reduce using rule 34 (statement)
+
+
+State 56
+
+   10 type: ARRAY LSBRACK INUM RSBRACK OF standard_type .
+
+    $default  reduce using rule 10 (type)
+
+
+State 57
+
+    8 identifier_list: identifier_list . COMA ID
+   22 parameter_list: identifier_list . COLON type
+   23               | identifier_list . COLON type SEMI parameter_list
+
+    COMA   shift, and go to state 29
+    COLON  shift, and go to state 82
+
+
+State 58
+
+   20 arguments: LPARENT parameter_list . RPARENT
+
+    RPARENT  shift, and go to state 83
+
+
+State 59
+
+   17 subprogram_head: FUNCTION ID $@4 arguments COLON . standard_type SEMI
+
+    INT    shift, and go to state 9
+    FLOAT  shift, and go to state 10
+
+    standard_type  go to state 84
+
+
+State 60
+
+   19 subprogram_head: PROCEDURE ID $@5 arguments SEMI .
+
+    $default  reduce using rule 19 (subprogram_head)
+
+
+State 61
+
+   40 procedure_statement: ID LPARENT . actual_parameter_expression RPARENT
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    $default  reduce using rule 48 (actual_parameter_expression)
+
+    variable                     go to state 69
+    procedure_statement          go to state 70
+    actual_parameter_expression  go to state 85
+    expression_list              go to state 86
+    expression                   go to state 87
+    simple_expression            go to state 72
+    term                         go to state 73
+    factor                       go to state 74
+
+
+State 62
+
+   39 variable: ID LSBRACK . expression RSBRACK
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression           go to state 88
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 63
+
+   65 factor: RNUM .
+
+    $default  reduce using rule 65 (factor)
+
+
+State 64
+
+   64 factor: INUM .
+
+    $default  reduce using rule 64 (factor)
+
+
+State 65
+
+   58 factor: INT .
+
+    $default  reduce using rule 58 (factor)
+
+
+State 66
+
+   62 factor: NOT . factor
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    factor               go to state 89
+
+
+State 67
+
+   59 factor: FLOAT .
+
+    $default  reduce using rule 59 (factor)
+
+
+State 68
+
+   63 factor: SIGN . factor
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    factor               go to state 90
+
+
+State 69
+
+   60 factor: variable .
+
+    $default  reduce using rule 60 (factor)
+
+
+State 70
+
+   61 factor: procedure_statement .
+
+    $default  reduce using rule 61 (factor)
+
+
+State 71
+
+   47 for_statement: FOR expression . IN expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+
+    IN  shift, and go to state 91
+
+
+State 72
+
+   52 expression: simple_expression .
+   53           | simple_expression . RELOP simple_expression
+
+    RELOP  shift, and go to state 92
+
+    $default  reduce using rule 52 (expression)
+
+
+State 73
+
+   54 simple_expression: term .
+   55                  | term . ADDOP simple_expression
+
+    ADDOP  shift, and go to state 93
+
+    $default  reduce using rule 54 (simple_expression)
+
+
+State 74
+
+   56 term: factor .
+   57     | factor . MULOP term
+
+    MULOP  shift, and go to state 94
+
+    $default  reduce using rule 56 (term)
+
+
+State 75
+
+   43 if_statement: IF expression . COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    COLON  shift, and go to state 95
+
+
+State 76
+
+   45 while_statement: WHILE expression . COLON statement $@8 LSBRACK ELSE COLON statement RSBRACK
+
+    COLON  shift, and go to state 96
+
+
+State 77
+
+   37 print_statement: PRINT LPARENT . expression RPARENT
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression           go to state 97
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 78
+
+   31 statement: RETURN expression .
+
+    $default  reduce using rule 31 (statement)
+
+
+State 79
+
+   24 compound_statement: BBEGIN statement_list END .
+
+    $default  reduce using rule 24 (compound_statement)
+
+
+State 80
+
+   26 statement_list: statement SEMI . statement_list
+
+    ID      shift, and go to state 41
+    BBEGIN  shift, and go to state 33
+    FOR     shift, and go to state 42
+    IF      shift, and go to state 43
+    WHILE   shift, and go to state 44
+    PRINT   shift, and go to state 45
+    RETURN  shift, and go to state 46
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 47
+    statement_list       go to state 98
+    statement            go to state 49
+    print_statement      go to state 50
+    variable             go to state 51
+    procedure_statement  go to state 52
+    if_statement         go to state 53
+    while_statement      go to state 54
+    for_statement        go to state 55
+
+
+State 81
+
+   27 statement: variable ASSIGNOP . expression
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression           go to state 99
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 82
+
+   22 parameter_list: identifier_list COLON . type
+   23               | identifier_list COLON . type SEMI parameter_list
+
+    ARRAY  shift, and go to state 8
+    INT    shift, and go to state 9
+    FLOAT  shift, and go to state 10
+
+    type           go to state 100
+    standard_type  go to state 13
+
+
+State 83
+
+   20 arguments: LPARENT parameter_list RPARENT .
+
+    $default  reduce using rule 20 (arguments)
+
+
+State 84
+
+   17 subprogram_head: FUNCTION ID $@4 arguments COLON standard_type . SEMI
+
+    SEMI  shift, and go to state 101
+
+
+State 85
+
+   40 procedure_statement: ID LPARENT actual_parameter_expression . RPARENT
+
+    RPARENT  shift, and go to state 102
+
+
+State 86
+
+   49 actual_parameter_expression: expression_list .
+
+    $default  reduce using rule 49 (actual_parameter_expression)
+
+
+State 87
+
+   50 expression_list: expression .
+   51                | expression . COMA expression_list
+
+    COMA  shift, and go to state 103
+
+    $default  reduce using rule 50 (expression_list)
+
+
+State 88
+
+   39 variable: ID LSBRACK expression . RSBRACK
+
+    RSBRACK  shift, and go to state 104
+
+
+State 89
+
+   62 factor: NOT factor .
+
+    $default  reduce using rule 62 (factor)
+
+
+State 90
+
+   63 factor: SIGN factor .
+
+    $default  reduce using rule 63 (factor)
+
+
+State 91
+
+   47 for_statement: FOR expression IN . expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression           go to state 105
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 92
+
+   53 expression: simple_expression RELOP . simple_expression
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    simple_expression    go to state 106
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 93
+
+   55 simple_expression: term ADDOP . simple_expression
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    simple_expression    go to state 107
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 94
+
+   57 term: factor MULOP . term
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    term                 go to state 108
+    factor               go to state 74
+
+
+State 95
+
+   43 if_statement: IF expression COLON . statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    ID      shift, and go to state 41
+    BBEGIN  shift, and go to state 33
+    FOR     shift, and go to state 42
+    IF      shift, and go to state 43
+    WHILE   shift, and go to state 44
+    PRINT   shift, and go to state 45
+    RETURN  shift, and go to state 46
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 47
+    statement            go to state 109
+    print_statement      go to state 50
+    variable             go to state 51
+    procedure_statement  go to state 52
+    if_statement         go to state 53
+    while_statement      go to state 54
+    for_statement        go to state 55
+
+
+State 96
+
+   45 while_statement: WHILE expression COLON . statement $@8 LSBRACK ELSE COLON statement RSBRACK
+
+    ID      shift, and go to state 41
+    BBEGIN  shift, and go to state 33
+    FOR     shift, and go to state 42
+    IF      shift, and go to state 43
+    WHILE   shift, and go to state 44
+    PRINT   shift, and go to state 45
+    RETURN  shift, and go to state 46
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 47
+    statement            go to state 110
+    print_statement      go to state 50
+    variable             go to state 51
+    procedure_statement  go to state 52
+    if_statement         go to state 53
+    while_statement      go to state 54
+    for_statement        go to state 55
+
+
+State 97
+
+   37 print_statement: PRINT LPARENT expression . RPARENT
+
+    RPARENT  shift, and go to state 111
+
+
+State 98
+
+   26 statement_list: statement SEMI statement_list .
+
+    $default  reduce using rule 26 (statement_list)
+
+
+State 99
+
+   27 statement: variable ASSIGNOP expression .
+
+    $default  reduce using rule 27 (statement)
+
+
+State 100
+
+   22 parameter_list: identifier_list COLON type .
+   23               | identifier_list COLON type . SEMI parameter_list
+
+    SEMI  shift, and go to state 112
+
+    $default  reduce using rule 22 (parameter_list)
+
+
+State 101
+
+   17 subprogram_head: FUNCTION ID $@4 arguments COLON standard_type SEMI .
+
+    $default  reduce using rule 17 (subprogram_head)
+
+
+State 102
+
+   40 procedure_statement: ID LPARENT actual_parameter_expression RPARENT .
+
+    $default  reduce using rule 40 (procedure_statement)
+
+
+State 103
+
+   51 expression_list: expression COMA . expression_list
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression_list      go to state 113
+    expression           go to state 87
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 104
+
+   39 variable: ID LSBRACK expression RSBRACK .
+
+    $default  reduce using rule 39 (variable)
+
+
+State 105
+
+   47 for_statement: FOR expression IN expression . COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+
+    COLON  shift, and go to state 114
+
+
+State 106
+
+   53 expression: simple_expression RELOP simple_expression .
+
+    $default  reduce using rule 53 (expression)
+
+
+State 107
+
+   55 simple_expression: term ADDOP simple_expression .
+
+    $default  reduce using rule 55 (simple_expression)
+
+
+State 108
+
+   57 term: factor MULOP term .
+
+    $default  reduce using rule 57 (term)
+
+
+State 109
+
+   43 if_statement: IF expression COLON statement . $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    $default  reduce using rule 41 ($@6)
+
+    $@6  go to state 115
+
+
+State 110
+
+   45 while_statement: WHILE expression COLON statement . $@8 LSBRACK ELSE COLON statement RSBRACK
+
+    $default  reduce using rule 44 ($@8)
+
+    $@8  go to state 116
+
+
+State 111
+
+   37 print_statement: PRINT LPARENT expression RPARENT .
+
+    $default  reduce using rule 37 (print_statement)
+
+
+State 112
+
+   23 parameter_list: identifier_list COLON type SEMI . parameter_list
+
+    ID  shift, and go to state 20
+
+    identifier_list  go to state 57
+    parameter_list   go to state 117
+
+
+State 113
+
+   51 expression_list: expression COMA expression_list .
+
+    $default  reduce using rule 51 (expression_list)
+
+
+State 114
+
+   47 for_statement: FOR expression IN expression COLON . statement $@9 LSBRACK ELSE COLON statement RSBRACK
+
+    ID      shift, and go to state 41
+    BBEGIN  shift, and go to state 33
+    FOR     shift, and go to state 42
+    IF      shift, and go to state 43
+    WHILE   shift, and go to state 44
+    PRINT   shift, and go to state 45
+    RETURN  shift, and go to state 46
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 47
+    statement            go to state 118
+    print_statement      go to state 50
+    variable             go to state 51
+    procedure_statement  go to state 52
+    if_statement         go to state 53
+    while_statement      go to state 54
+    for_statement        go to state 55
+
+
+State 115
+
+   43 if_statement: IF expression COLON statement $@6 . LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    LPARENT  shift, and go to state 119
+
+
+State 116
+
+   45 while_statement: WHILE expression COLON statement $@8 . LSBRACK ELSE COLON statement RSBRACK
+
+    LSBRACK  shift, and go to state 120
+
+
+State 117
+
+   23 parameter_list: identifier_list COLON type SEMI parameter_list .
+
+    $default  reduce using rule 23 (parameter_list)
+
+
+State 118
+
+   47 for_statement: FOR expression IN expression COLON statement . $@9 LSBRACK ELSE COLON statement RSBRACK
+
+    $default  reduce using rule 46 ($@9)
+
+    $@9  go to state 121
+
+
+State 119
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT . ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    ELIF  shift, and go to state 122
+
+
+State 120
+
+   45 while_statement: WHILE expression COLON statement $@8 LSBRACK . ELSE COLON statement RSBRACK
+
+    ELSE  shift, and go to state 123
+
+
+State 121
+
+   47 for_statement: FOR expression IN expression COLON statement $@9 . LSBRACK ELSE COLON statement RSBRACK
+
+    LSBRACK  shift, and go to state 124
+
+
+State 122
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF . expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    ID     shift, and go to state 41
+    RNUM   shift, and go to state 63
+    INUM   shift, and go to state 64
+    INT    shift, and go to state 65
+    NOT    shift, and go to state 66
+    FLOAT  shift, and go to state 67
+    SIGN   shift, and go to state 68
+
+    variable             go to state 69
+    procedure_statement  go to state 70
+    expression           go to state 125
+    simple_expression    go to state 72
+    term                 go to state 73
+    factor               go to state 74
+
+
+State 123
+
+   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE . COLON statement RSBRACK
+
+    COLON  shift, and go to state 126
+
+
+State 124
+
+   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK . ELSE COLON statement RSBRACK
+
+    ELSE  shift, and go to state 127
+
+
+State 125
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression . COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    COLON  shift, and go to state 128
+
+
+State 126
+
+   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE COLON . statement RSBRACK
+
+    ID      shift, and go to state 41
+    BBEGIN  shift, and go to state 33
+    FOR     shift, and go to state 42
+    IF      shift, and go to state 43
+    WHILE   shift, and go to state 44
+    PRINT   shift, and go to state 45
+    RETURN  shift, and go to state 46
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 47
+    statement            go to state 129
+    print_statement      go to state 50
+    variable             go to state 51
+    procedure_statement  go to state 52
+    if_statement         go to state 53
+    while_statement      go to state 54
+    for_statement        go to state 55
+
+
+State 127
+
+   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE . COLON statement RSBRACK
+
+    COLON  shift, and go to state 130
+
+
+State 128
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON . statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    ID      shift, and go to state 41
+    BBEGIN  shift, and go to state 33
+    FOR     shift, and go to state 42
+    IF      shift, and go to state 43
+    WHILE   shift, and go to state 44
+    PRINT   shift, and go to state 45
+    RETURN  shift, and go to state 46
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 47
+    statement            go to state 131
+    print_statement      go to state 50
+    variable             go to state 51
+    procedure_statement  go to state 52
+    if_statement         go to state 53
+    while_statement      go to state 54
+    for_statement        go to state 55
+
+
+State 129
+
+   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE COLON statement . RSBRACK
+
+    RSBRACK  shift, and go to state 132
+
+
+State 130
+
+   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE COLON . statement RSBRACK
+
+    ID      shift, and go to state 41
+    BBEGIN  shift, and go to state 33
+    FOR     shift, and go to state 42
+    IF      shift, and go to state 43
+    WHILE   shift, and go to state 44
+    PRINT   shift, and go to state 45
+    RETURN  shift, and go to state 46
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 47
+    statement            go to state 133
+    print_statement      go to state 50
+    variable             go to state 51
+    procedure_statement  go to state 52
+    if_statement         go to state 53
+    while_statement      go to state 54
+    for_statement        go to state 55
+
+
+State 131
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement . RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    RPARENT  shift, and go to state 134
+
+
+State 132
+
+   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE COLON statement RSBRACK .
+
+    $default  reduce using rule 45 (while_statement)
+
+
+State 133
+
+   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE COLON statement . RSBRACK
+
+    RSBRACK  shift, and go to state 135
+
+
+State 134
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT . $@7 LSBRACK ELSE COLON statement RSBRACK
+
+    $default  reduce using rule 42 ($@7)
+
+    $@7  go to state 136
+
+
+State 135
+
+   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK .
+
+    $default  reduce using rule 47 (for_statement)
+
+
+State 136
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 . LSBRACK ELSE COLON statement RSBRACK
+
+    LSBRACK  shift, and go to state 137
+
+
+State 137
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK . ELSE COLON statement RSBRACK
+
+    ELSE  shift, and go to state 138
+
+
+State 138
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE . COLON statement RSBRACK
+
+    COLON  shift, and go to state 139
+
+
+State 139
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON . statement RSBRACK
+
+    ID      shift, and go to state 41
+    BBEGIN  shift, and go to state 33
+    FOR     shift, and go to state 42
+    IF      shift, and go to state 43
+    WHILE   shift, and go to state 44
+    PRINT   shift, and go to state 45
+    RETURN  shift, and go to state 46
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 47
+    statement            go to state 140
+    print_statement      go to state 50
+    variable             go to state 51
+    procedure_statement  go to state 52
+    if_statement         go to state 53
+    while_statement      go to state 54
+    for_statement        go to state 55
+
+
+State 140
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement . RSBRACK
+
+    RSBRACK  shift, and go to state 141
+
+
+State 141
+
+   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK .
+
+    $default  reduce using rule 43 (if_statement)
