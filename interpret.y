@@ -9,7 +9,7 @@
 #include "decl_list.h"
 #include "arg_list.h"			//argument list
 #include "scope.h"			//scope
-#include "type.h"  			//symbol table 이용
+#include "type.h"  			
 #include "symtab.h"			//symbol table
 #include "semantics.h"			//semantic
 
@@ -76,15 +76,15 @@ program :
 		}
             declarations
 		{
-                scope_push(symtable_stack, st); // 전역변수 선언
-		print_symtab(st);	//declaration 결과 symbol table 출력
+                scope_push(symtable_stack, st);
+		print_symtab(st);	
 		}
             subprogram_declarations
 		{
 		}
             compound_statement
 		{	
-                stack_offset = calculate_stack_offset(st); // 선언문의 내용 전역변수로 저장
+                stack_offset = calculate_stack_offset(st); 
 		}
 
           ;
@@ -92,7 +92,7 @@ program :
 declarations:
             declarations type identifier_list SEMI 
 			{
-				add_decl_to_symtab(VAR_CLASS, $2, ST_LOCAL); // variable class , type, location저장
+				add_decl_to_symtab(VAR_CLASS, $2, ST_LOCAL); 
 			}
           | 
           ;
@@ -101,20 +101,20 @@ declarations:
 identifier_list:
             ID 
 			{
-				head = decl_append(head, $1); // 첫번째 토큰 ID를 decl_elem list에 확장
+				head = decl_append(head, $1);
 			}
            | identifier_list COMA ID
 			{
 //				
-				head = decl_append(head, $3); // . 토큰 ID를 decl_elem list에 확장
+				head = decl_append(head, $3);
 			}
 	  ;
 
 type:
             standard_type
 			{
-				$$ = (type_struct *) calloc(1, sizeof(type_struct)); //type을 추가하고
-				$$->name = $1;					//이름을 추가
+				$$ = (type_struct *) calloc(1, sizeof(type_struct)); 
+				$$->name = $1;					
 			}
 
 	| standard_type LSBRACK INUM RSBRACK
@@ -132,7 +132,7 @@ type:
 standard_type:
             INT
 		{
-			$$ = INTEGER_TYPE;	//int = integer_type 으로 치환
+			$$ = INTEGER_TYPE;	
 		}
           | FLOAT
 		{
@@ -251,6 +251,7 @@ parameter_list:
             identifier_list COLON type
 		{
                add_decl_to_symtab(VAR_CLASS, $3, ST_PARAMETER);
+		
 		}
           | identifier_list COLON type SEMI parameter_list
 		{
@@ -409,6 +410,7 @@ factor:
           | variable
 		{$$ = $1;}
           | procedure_statement
+		{function_semantics(st_node,yyval.tval);}
           | NOT factor
                 { $$ = mktree(NOT_FACTOR, 1, $2); }
           | SIGN factor

@@ -1072,13 +1072,13 @@ YY_RULE_SETUP
 case 39:
 YY_RULE_SETUP
 #line 65 "interpret.l"
-{ int c;
-                   	   while (c = input()) {
-                  	      if (c == '*')
-                        	  if ((c = input()) == '/')
+{ int a;
+                   	   while (a = input()) {
+                  	      if (a == '*')
+                        	  if ((a = input()) == '/')
                         	    break;
                        		  else
-	                            unput(c);
+	                            unput(a);
         	           } }
 	YY_BREAK
 case 40:

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "tree.h"
 #include "type.h" //symtab_type type
-#include "interpret.tab.h"  //interpret.y에서 정의된 토큰 가져옴.
+#include "interpret.tab.h"  
 %}
 
 letter			[a-zA-Z]
@@ -62,13 +62,13 @@ mulop			("*"|"/")
 {whitespace}	        { }                    				
 
 "//".*			{ }						
-"/*"               	{ int c;
-                   	   while (c = input()) {
-                  	      if (c == '*')
-                        	  if ((c = input()) == '/')
+"/*"               	{ int a;
+                   	   while (a = input()) {
+                  	      if (a == '*')
+                        	  if ((a = input()) == '/')
                         	    break;
                        		  else
-	                            unput(c);
+	                            unput(a);
         	           } }
 
 \n			{ } 					

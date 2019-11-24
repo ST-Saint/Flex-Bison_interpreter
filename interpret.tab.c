@@ -515,11 +515,11 @@ static const yytype_uint16 yyrline[] =
 {
        0,    75,    75,    78,    83,    74,    93,    97,   102,   106,
      114,   120,   133,   137,   144,   145,   149,   174,   173,   211,
-     210,   246,   247,   251,   255,   262,   270,   274,   281,   291,
-     293,   295,   297,   300,   302,   304,   306,   313,   315,   320,
-     329,   341,   346,   348,   345,   355,   354,   361,   360,   365,
-     367,   372,   373,   377,   381,   385,   389,   392,   396,   405,
-     407,   409,   411,   412,   414,   416,   423
+     210,   246,   247,   251,   256,   263,   271,   275,   282,   292,
+     294,   296,   298,   301,   303,   305,   307,   314,   316,   321,
+     330,   342,   347,   349,   346,   356,   355,   362,   361,   366,
+     368,   373,   374,   378,   382,   386,   390,   393,   397,   406,
+     408,   410,   412,   414,   416,   418,   425
 };
 #endif
 
@@ -1590,44 +1590,45 @@ yyreduce:
 #line 252 "interpret.y" /* yacc.c:1646  */
     {
                add_decl_to_symtab(VAR_CLASS, (yyvsp[0].type_s), ST_PARAMETER);
+		
 		}
-#line 1595 "interpret.tab.c" /* yacc.c:1646  */
+#line 1596 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 256 "interpret.y" /* yacc.c:1646  */
+#line 257 "interpret.y" /* yacc.c:1646  */
     {
                //add_decl_to_symtab(VAR_CLASS, $3, ST_PARAMETER);
 		}
-#line 1603 "interpret.tab.c" /* yacc.c:1646  */
+#line 1604 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 263 "interpret.y" /* yacc.c:1646  */
+#line 264 "interpret.y" /* yacc.c:1646  */
     {
 		(yyval.tval) = mktree(BEGIN_END, 1, (yyvsp[-1].tval));
 		}
-#line 1611 "interpret.tab.c" /* yacc.c:1646  */
+#line 1612 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 271 "interpret.y" /* yacc.c:1646  */
+#line 272 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval)=(yyvsp[0].tval);
 		}
-#line 1619 "interpret.tab.c" /* yacc.c:1646  */
+#line 1620 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 275 "interpret.y" /* yacc.c:1646  */
+#line 276 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval) = mktree(STMT_LIST, 2, (yyvsp[0].tval), (yyvsp[-2].tval));
 		}
-#line 1627 "interpret.tab.c" /* yacc.c:1646  */
+#line 1628 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 282 "interpret.y" /* yacc.c:1646  */
+#line 283 "interpret.y" /* yacc.c:1646  */
     {
 			//type checking
 			fprintf(stderr, "type comparison : %d (compare) %d\n",type_check((yyvsp[-2].tval)),type_check((yyvsp[0].tval)));
@@ -1637,71 +1638,71 @@ yyreduce:
 			(yyval.tval) = mktree(ASSIGN_STMT, 2, (yyvsp[-2].tval), (yyvsp[0].tval));
 			printf("assign success\n");
 		}
-#line 1641 "interpret.tab.c" /* yacc.c:1646  */
+#line 1642 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 292 "interpret.y" /* yacc.c:1646  */
+#line 293 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1647 "interpret.tab.c" /* yacc.c:1646  */
+#line 1648 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 294 "interpret.y" /* yacc.c:1646  */
+#line 295 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1653 "interpret.tab.c" /* yacc.c:1646  */
+#line 1654 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 296 "interpret.y" /* yacc.c:1646  */
+#line 297 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1659 "interpret.tab.c" /* yacc.c:1646  */
+#line 1660 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 298 "interpret.y" /* yacc.c:1646  */
+#line 299 "interpret.y" /* yacc.c:1646  */
     { st->has_return = 1;}
-#line 1665 "interpret.tab.c" /* yacc.c:1646  */
+#line 1666 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 301 "interpret.y" /* yacc.c:1646  */
+#line 302 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1671 "interpret.tab.c" /* yacc.c:1646  */
+#line 1672 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 303 "interpret.y" /* yacc.c:1646  */
+#line 304 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1677 "interpret.tab.c" /* yacc.c:1646  */
+#line 1678 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 305 "interpret.y" /* yacc.c:1646  */
+#line 306 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1683 "interpret.tab.c" /* yacc.c:1646  */
+#line 1684 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 306 "interpret.y" /* yacc.c:1646  */
+#line 307 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1689 "interpret.tab.c" /* yacc.c:1646  */
+#line 1690 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 314 "interpret.y" /* yacc.c:1646  */
+#line 315 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1695 "interpret.tab.c" /* yacc.c:1646  */
+#line 1696 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 316 "interpret.y" /* yacc.c:1646  */
+#line 317 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1701 "interpret.tab.c" /* yacc.c:1646  */
+#line 1702 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 321 "interpret.y" /* yacc.c:1646  */
+#line 322 "interpret.y" /* yacc.c:1646  */
     {
                st_node = search_scope_stack(symtable_stack, (yyvsp[0].sval));	//Search Stack
                if (st_node == NULL) { sem_error(VAR_UNDECLARED); }	//None - Error
@@ -1710,11 +1711,11 @@ yyreduce:
                (yyval.tval) = mktree(IDENT, 0);
                (yyval.tval)->attr.sval = st_node;
 }
-#line 1714 "interpret.tab.c" /* yacc.c:1646  */
+#line 1715 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 330 "interpret.y" /* yacc.c:1646  */
+#line 331 "interpret.y" /* yacc.c:1646  */
     {
 				st_node = search_scope_stack(symtable_stack, (yyvsp[-3].sval));
 				if (st_node == NULL) { sem_error(VAR_UNDECLARED); }
@@ -1723,138 +1724,144 @@ yyreduce:
 				(yyval.tval) = mktree(ID_ARRAY, 1, (yyvsp[-1].tval));
 				(yyval.tval)->attr.sval = st_node;
 			}
-#line 1727 "interpret.tab.c" /* yacc.c:1646  */
+#line 1728 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 342 "interpret.y" /* yacc.c:1646  */
+#line 343 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1733 "interpret.tab.c" /* yacc.c:1646  */
+#line 1734 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 346 "interpret.y" /* yacc.c:1646  */
+#line 347 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1739 "interpret.tab.c" /* yacc.c:1646  */
+#line 1740 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 348 "interpret.y" /* yacc.c:1646  */
+#line 349 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1745 "interpret.tab.c" /* yacc.c:1646  */
+#line 1746 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 350 "interpret.y" /* yacc.c:1646  */
+#line 351 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1751 "interpret.tab.c" /* yacc.c:1646  */
+#line 1752 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 355 "interpret.y" /* yacc.c:1646  */
+#line 356 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1757 "interpret.tab.c" /* yacc.c:1646  */
+#line 1758 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 357 "interpret.y" /* yacc.c:1646  */
+#line 358 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1763 "interpret.tab.c" /* yacc.c:1646  */
+#line 1764 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 361 "interpret.y" /* yacc.c:1646  */
+#line 362 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1769 "interpret.tab.c" /* yacc.c:1646  */
+#line 1770 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 378 "interpret.y" /* yacc.c:1646  */
+#line 379 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval)= (yyvsp[0].tval);
 		}
-#line 1777 "interpret.tab.c" /* yacc.c:1646  */
+#line 1778 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 386 "interpret.y" /* yacc.c:1646  */
+#line 387 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval)=(yyvsp[0].tval);
 		}
-#line 1785 "interpret.tab.c" /* yacc.c:1646  */
+#line 1786 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 393 "interpret.y" /* yacc.c:1646  */
+#line 394 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval)=(yyvsp[0].tval);
 		}
-#line 1793 "interpret.tab.c" /* yacc.c:1646  */
+#line 1794 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 397 "interpret.y" /* yacc.c:1646  */
+#line 398 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval) = mktree(MULOP_EXPR, 2, (yyvsp[0].tval), (yyvsp[-2].tval));
 			(yyval.tval)->attr.opval = (yyvsp[-1].opval);
 		}
-#line 1802 "interpret.tab.c" /* yacc.c:1646  */
+#line 1803 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 406 "interpret.y" /* yacc.c:1646  */
+#line 407 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1808 "interpret.tab.c" /* yacc.c:1646  */
+#line 1809 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 408 "interpret.y" /* yacc.c:1646  */
+#line 409 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1814 "interpret.tab.c" /* yacc.c:1646  */
+#line 1815 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 410 "interpret.y" /* yacc.c:1646  */
+#line 411 "interpret.y" /* yacc.c:1646  */
     {(yyval.tval) = (yyvsp[0].tval);}
-#line 1820 "interpret.tab.c" /* yacc.c:1646  */
+#line 1821 "interpret.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 62:
+#line 413 "interpret.y" /* yacc.c:1646  */
+    {function_semantics(st_node,yyval.tval);}
+#line 1827 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 413 "interpret.y" /* yacc.c:1646  */
+#line 415 "interpret.y" /* yacc.c:1646  */
     { (yyval.tval) = mktree(NOT_FACTOR, 1, (yyvsp[0].tval)); }
-#line 1826 "interpret.tab.c" /* yacc.c:1646  */
+#line 1833 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 415 "interpret.y" /* yacc.c:1646  */
+#line 417 "interpret.y" /* yacc.c:1646  */
     { (yyval.tval) = mktree(SIGN_TERM, 1,(yyvsp[0].tval)); }
-#line 1832 "interpret.tab.c" /* yacc.c:1646  */
+#line 1839 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 417 "interpret.y" /* yacc.c:1646  */
+#line 419 "interpret.y" /* yacc.c:1646  */
     {
 		printf("int number : %d\n",(yyvsp[0].ival));	
 		(yyval.tval) = mktree(INUMBER,0);
 		(yyval.tval)->attr.ival = (yyvsp[0].ival);
 		printf("int number accept success - %d\n",(yyvsp[0].ival));			
 		}
-#line 1843 "interpret.tab.c" /* yacc.c:1646  */
+#line 1850 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 424 "interpret.y" /* yacc.c:1646  */
+#line 426 "interpret.y" /* yacc.c:1646  */
     {
 		printf("real number : %f\n",(yyvsp[0].rval));
 		(yyval.tval) = mktree(RNUMBER,0);
 		(yyval.tval)->attr.rval = (yyvsp[0].rval);
 		printf("real number accept success - %f\n",(yyvsp[0].rval));			
 		}
-#line 1854 "interpret.tab.c" /* yacc.c:1646  */
+#line 1861 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1858 "interpret.tab.c" /* yacc.c:1646  */
+#line 1865 "interpret.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2082,7 +2089,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 432 "interpret.y" /* yacc.c:1906  */
+#line 434 "interpret.y" /* yacc.c:1906  */
 
 
 void add_decl_to_symtab(symtab_type class, type_struct *type, location_e location) {
