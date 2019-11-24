@@ -21,43 +21,43 @@ addop			("+"|"-")
 mulop			("*"|"/")
 
 %%
-"mainprog"|"MAINPROG"		{ return MAINPROG; }
-"var"|"VAR"			{ return VAR; }
-"of"|"OF"			{ return OF;}
-"nop"|"NOP"			{ return NOP;}
-"function"|"FUNCTION"		{ return FUNCTION; }
-"procedure"|"PROCEDURE"		{ return PROCEDURE; }
-"begin"|"BEGIN"			{ return BBEGIN; }
-"end"|"END"			{ return END; }
-"if"|"IF"			{ return IF; }
-"then"|"THEN"			{ return THEN; }
-"elif"|"ELIF"			{ return ELIF; }
-"else"|"ELSE"			{ return ELSE; }
-"while"|"WHILE"			{ return WHILE; }
-"for"|"FOR"			{ return FOR; }
-"in"|"IN"			{ return IN;}
-"array"|"ARRAY"			{ return ARRAY; }
-"float"|"FLOAT"			{ return FLOAT; }
-"int"|"INT"			{ return INT; }
-"return"|"RETURN"		{ return RETURN; }
-"="				{ return ASSIGNOP; }
-"print"|"PRINT"			{ return PRINT;	}
-";"				{ return SEMI; }
-","				{ return COMA; }
-":"				{ return COLON; }
-"("				{ return LPARENT;}
-")"				{ return RPARENT;}
-"["				{ return LSBRACK;}
-"]"				{ return RSBRACK;}
-"!"				{ return NOT; }
-"."				{ return DOT; }
+"mainprog"|"MAINPROG"		{printf("MAINPROG\n"); return MAINPROG; }
+"var"|"VAR"			{printf("VAR\n"); return VAR; }
+"of"|"OF"			{printf("OF\n"); return OF;}
+"nop"|"NOP"			{printf("NOP\n"); return NOP;}
+"function"|"FUNCTION"		{printf("FUNCTION\n"); return FUNCTION; }
+"procedure"|"PROCEDURE"		{printf("PROCEDURE\n"); return PROCEDURE; }
+"begin"|"BEGIN"			{printf("BEGIN\n"); return BBEGIN; }
+"end"|"END"			{printf("END\n"); return END; }
+"if"|"IF"			{printf("IF\n"); return IF; }
+"then"|"THEN"			{printf("THEN\n"); return THEN; }
+"elif"|"ELIF"			{printf("ELIF\n"); return ELIF; }
+"else"|"ELSE"			{printf("ELSE\n"); return ELSE; }
+"while"|"WHILE"			{printf("WHILE\n"); return WHILE; }
+"for"|"FOR"			{printf("FOR\n"); return FOR; }
+"in"|"IN"			{printf("IN\n"); return IN;}
+"array"|"ARRAY"			{printf("ARRAY\n"); return ARRAY; }
+"float"|"FLOAT"			{printf("FLOAT\n"); return FLOAT; }
+"int"|"INT"			{printf("INT\n"); return INT; }
+"return"|"RETURN"		{printf("RETURN\n"); return RETURN; }
+"="				{printf("ASSIGNOP\n"); return ASSIGNOP; }
+"print"|"PRINT"			{printf("PRINT\n"); return PRINT;	}
+";"				{printf("SEMI\n"); return SEMI; }
+","				{printf("COMA\n"); return COMA; }
+":"				{printf("COLON\n"); return COLON; }
+"("				{printf("LPARENT\n"); return LPARENT;}
+")"				{printf("RPARENT\n"); return RPARENT;}
+"["				{printf("LSBRACK\n"); return LSBRACK;}
+"]"				{printf("RSBRACK\n"); return RSBRACK;}
+"!"				{printf("NOT\n"); return NOT; }
+"."				{printf("DOT\n"); return DOT; }
 
-{addop}			{ yylval.opval = strdup(yytext); return ADDOP; }	
-{mulop}			{ yylval.opval = strdup(yytext); return MULOP; } 
-{relop}			{ yylval.opval = strdup(yytext); return RELOP; }
-{id}			{ yylval.sval = strdup(yytext); return ID; }
-{rnum}			{ yylval.rval = atof(yytext); return RNUM; }	
-{inum}			{ yylval.ival = atoi(yytext); return INUM; }	
+{addop}			{ yylval.opval = strdup(yytext);printf("ADDOP\n"); return ADDOP; }	
+{mulop}			{ yylval.opval = strdup(yytext);printf("MULOP\n"); return MULOP; } 
+{relop}			{ yylval.opval = strdup(yytext);printf("RELOP\n"); return RELOP; }
+{id}			{ yylval.sval = strdup(yytext);printf("ID\n"); return ID; }
+{rnum}			{ yylval.rval = atof(yytext);printf("RNUM\n"); return RNUM; }	
+{inum}			{ yylval.ival = atoi(yytext);printf("INU\nM"); return INUM; }	
 	
 {whitespace}	        { }                    				
 

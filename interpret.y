@@ -117,12 +117,12 @@ type:
 				$$->name = $1;					//이름을 추가
 			}
 
-          | ARRAY LSBRACK INUM RSBRACK OF standard_type
+	| standard_type LSBRACK INUM RSBRACK
 		{
                $$ = (type_struct *) calloc(1, sizeof(type_struct));
-               if ($6 == INTEGER_TYPE)
+               if ($1 == INTEGER_TYPE)
                	$$->name = ARRAY_TYPE_INT;
-               else if ($6 == FLOAT_TYPE)
+               else if ($1 == FLOAT_TYPE)
                	$$->name = ARRAY_TYPE_REAL;
                $$->lb = 1;	//low bound = 1
                $$->ub = $3;	//upper bound = inum
@@ -165,8 +165,6 @@ subprogram_declaration:
                st = scope_pop(symtable_stack);
 		/* Pop parent scope so it's available again */
                st = scope_pop(symtable_stack);
-
-//               epilogue(); //무슨함수인지? 어셈블리 관련 STACK CLEAR 같은데..
                }
 		}
           ;

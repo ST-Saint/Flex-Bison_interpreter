@@ -882,182 +882,182 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 24 "interpret.l"
-{ return MAINPROG; }
+{printf("MAINPROG\n"); return MAINPROG; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 25 "interpret.l"
-{ return VAR; }
+{printf("VAR\n"); return VAR; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 26 "interpret.l"
-{ return OF;}
+{printf("OF\n"); return OF;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 27 "interpret.l"
-{ return NOP;}
+{printf("NOP\n"); return NOP;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 28 "interpret.l"
-{ return FUNCTION; }
+{printf("FUNCTION\n"); return FUNCTION; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 29 "interpret.l"
-{ return PROCEDURE; }
+{printf("PROCEDURE\n"); return PROCEDURE; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 30 "interpret.l"
-{ return BBEGIN; }
+{printf("BEGIN\n"); return BBEGIN; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 31 "interpret.l"
-{ return END; }
+{printf("END\n"); return END; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 32 "interpret.l"
-{ return IF; }
+{printf("IF\n"); return IF; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 33 "interpret.l"
-{ return THEN; }
+{printf("THEN\n"); return THEN; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 34 "interpret.l"
-{ return ELIF; }
+{printf("ELIF\n"); return ELIF; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 35 "interpret.l"
-{ return ELSE; }
+{printf("ELSE\n"); return ELSE; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 36 "interpret.l"
-{ return WHILE; }
+{printf("WHILE\n"); return WHILE; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 37 "interpret.l"
-{ return FOR; }
+{printf("FOR\n"); return FOR; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 38 "interpret.l"
-{ return IN;}
+{printf("IN\n"); return IN;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 39 "interpret.l"
-{ return ARRAY; }
+{printf("ARRAY\n"); return ARRAY; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 40 "interpret.l"
-{ return FLOAT; }
+{printf("FLOAT\n"); return FLOAT; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 41 "interpret.l"
-{ return INT; }
+{printf("INT\n"); return INT; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 42 "interpret.l"
-{ return RETURN; }
+{printf("RETURN\n"); return RETURN; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 43 "interpret.l"
-{ return ASSIGNOP; }
+{printf("ASSIGNOP\n"); return ASSIGNOP; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 44 "interpret.l"
-{ return PRINT;	}
+{printf("PRINT\n"); return PRINT;	}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 45 "interpret.l"
-{ return SEMI; }
+{printf("SEMI\n"); return SEMI; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 46 "interpret.l"
-{ return COMA; }
+{printf("COMA\n"); return COMA; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 47 "interpret.l"
-{ return COLON; }
+{printf("COLON\n"); return COLON; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 48 "interpret.l"
-{ return LPARENT;}
+{printf("LPARENT\n"); return LPARENT;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 49 "interpret.l"
-{ return RPARENT;}
+{printf("RPARENT\n"); return RPARENT;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 50 "interpret.l"
-{ return LSBRACK;}
+{printf("LSBRACK\n"); return LSBRACK;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 51 "interpret.l"
-{ return RSBRACK;}
+{printf("RSBRACK\n"); return RSBRACK;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 52 "interpret.l"
-{ return NOT; }
+{printf("NOT\n"); return NOT; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 53 "interpret.l"
-{ return DOT; }
+{printf("DOT\n"); return DOT; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 55 "interpret.l"
-{ yylval.opval = strdup(yytext); return ADDOP; }	
+{ yylval.opval = strdup(yytext);printf("ADDOP\n"); return ADDOP; }	
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 56 "interpret.l"
-{ yylval.opval = strdup(yytext); return MULOP; } 
+{ yylval.opval = strdup(yytext);printf("MULOP\n"); return MULOP; } 
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 57 "interpret.l"
-{ yylval.opval = strdup(yytext); return RELOP; }
+{ yylval.opval = strdup(yytext);printf("RELOP\n"); return RELOP; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
 #line 58 "interpret.l"
-{ yylval.sval = strdup(yytext); return ID; }
+{ yylval.sval = strdup(yytext);printf("ID\n"); return ID; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
 #line 59 "interpret.l"
-{ yylval.rval = atof(yytext); return RNUM; }	
+{ yylval.rval = atof(yytext);printf("RNUM\n"); return RNUM; }	
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 60 "interpret.l"
-{ yylval.ival = atoi(yytext); return INUM; }	
+{ yylval.ival = atoi(yytext);printf("INU\nM"); return INUM; }	
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
