@@ -518,8 +518,8 @@ static const yytype_uint16 yyrline[] =
      210,   246,   247,   251,   255,   262,   270,   274,   281,   291,
      293,   295,   297,   300,   302,   304,   306,   313,   315,   320,
      329,   341,   346,   348,   345,   355,   354,   361,   360,   365,
-     367,   372,   373,   377,   382,   386,   391,   394,   399,   408,
-     410,   412,   414,   415,   417,   419,   426
+     367,   372,   373,   377,   381,   385,   389,   392,   396,   405,
+     407,   409,   411,   412,   414,   416,   423
 };
 #endif
 
@@ -1430,7 +1430,7 @@ yyreduce:
   case 9:
 #line 107 "interpret.y" /* yacc.c:1646  */
     {
-//				printf("ID_LIST\n");
+//				
 				head = decl_append(head, (yyvsp[0].sval)); // . 토큰 ID를 decl_elem list에 확장
 			}
 #line 1437 "interpret.tab.c" /* yacc.c:1646  */
@@ -1772,92 +1772,89 @@ yyreduce:
 #line 378 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval)= (yyvsp[0].tval);
-printf("simple -> expression\n");	
 		}
-#line 1778 "interpret.tab.c" /* yacc.c:1646  */
+#line 1777 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 387 "interpret.y" /* yacc.c:1646  */
+#line 386 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval)=(yyvsp[0].tval);
-			printf("term -> simple\n");
 		}
-#line 1787 "interpret.tab.c" /* yacc.c:1646  */
+#line 1785 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 395 "interpret.y" /* yacc.c:1646  */
+#line 393 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval)=(yyvsp[0].tval);
-			printf("factor -> term\n");
 		}
-#line 1796 "interpret.tab.c" /* yacc.c:1646  */
+#line 1793 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 400 "interpret.y" /* yacc.c:1646  */
+#line 397 "interpret.y" /* yacc.c:1646  */
     {
 			(yyval.tval) = mktree(MULOP_EXPR, 2, (yyvsp[0].tval), (yyvsp[-2].tval));
 			(yyval.tval)->attr.opval = (yyvsp[-1].opval);
 		}
-#line 1805 "interpret.tab.c" /* yacc.c:1646  */
+#line 1802 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 409 "interpret.y" /* yacc.c:1646  */
+#line 406 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1811 "interpret.tab.c" /* yacc.c:1646  */
+#line 1808 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 411 "interpret.y" /* yacc.c:1646  */
+#line 408 "interpret.y" /* yacc.c:1646  */
     {}
-#line 1817 "interpret.tab.c" /* yacc.c:1646  */
+#line 1814 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 413 "interpret.y" /* yacc.c:1646  */
+#line 410 "interpret.y" /* yacc.c:1646  */
     {(yyval.tval) = (yyvsp[0].tval);}
-#line 1823 "interpret.tab.c" /* yacc.c:1646  */
+#line 1820 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 416 "interpret.y" /* yacc.c:1646  */
+#line 413 "interpret.y" /* yacc.c:1646  */
     { (yyval.tval) = mktree(NOT_FACTOR, 1, (yyvsp[0].tval)); }
-#line 1829 "interpret.tab.c" /* yacc.c:1646  */
+#line 1826 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 418 "interpret.y" /* yacc.c:1646  */
+#line 415 "interpret.y" /* yacc.c:1646  */
     { (yyval.tval) = mktree(SIGN_TERM, 1,(yyvsp[0].tval)); }
-#line 1835 "interpret.tab.c" /* yacc.c:1646  */
+#line 1832 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 420 "interpret.y" /* yacc.c:1646  */
+#line 417 "interpret.y" /* yacc.c:1646  */
     {
 		printf("int number : %d\n",(yyvsp[0].ival));	
 		(yyval.tval) = mktree(INUMBER,0);
 		(yyval.tval)->attr.ival = (yyvsp[0].ival);
 		printf("int number accept success - %d\n",(yyvsp[0].ival));			
 		}
-#line 1846 "interpret.tab.c" /* yacc.c:1646  */
+#line 1843 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 427 "interpret.y" /* yacc.c:1646  */
+#line 424 "interpret.y" /* yacc.c:1646  */
     {
 		printf("real number : %f\n",(yyvsp[0].rval));
 		(yyval.tval) = mktree(RNUMBER,0);
 		(yyval.tval)->attr.rval = (yyvsp[0].rval);
 		printf("real number accept success - %f\n",(yyvsp[0].rval));			
 		}
-#line 1857 "interpret.tab.c" /* yacc.c:1646  */
+#line 1854 "interpret.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1861 "interpret.tab.c" /* yacc.c:1646  */
+#line 1858 "interpret.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2085,12 +2082,11 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 435 "interpret.y" /* yacc.c:1906  */
+#line 432 "interpret.y" /* yacc.c:1906  */
 
 
 void add_decl_to_symtab(symtab_type class, type_struct *type, location_e location) {
   data = head;
-//	printf("num_add_to_sytb : %d\n",num_add_to_sytb++);
   if (data != NULL) {
     do {
       if (location == ST_PARAMETER) {

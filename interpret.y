@@ -105,7 +105,7 @@ identifier_list:
 			}
            | identifier_list COMA ID
 			{
-//				printf("ID_LIST\n");
+//				
 				head = decl_append(head, $3); // . 토큰 ID를 decl_elem list에 확장
 			}
 	  ;
@@ -377,7 +377,6 @@ expression:
 		simple_expression
 		{
 			$$= $1;
-printf("simple -> expression\n");	
 		}
 		  | simple_expression RELOP simple_expression
 		  ;
@@ -386,7 +385,6 @@ simple_expression:
             term
 		{
 			$$=$1;
-			printf("term -> simple\n");
 		}
           | term ADDOP simple_expression
 	  ;
@@ -394,7 +392,6 @@ term:
             factor
 		{
 			$$=$1;
-			printf("factor -> term\n");
 		}
           | factor MULOP term
 		{
@@ -436,7 +433,6 @@ factor:
 
 void add_decl_to_symtab(symtab_type class, type_struct *type, location_e location) {
   data = head;
-//	printf("num_add_to_sytb : %d\n",num_add_to_sytb++);
   if (data != NULL) {
     do {
       if (location == ST_PARAMETER) {

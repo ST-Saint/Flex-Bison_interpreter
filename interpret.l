@@ -57,7 +57,7 @@ mulop			("*"|"/")
 {relop}			{ yylval.opval = strdup(yytext);printf("RELOP\n"); return RELOP; }
 {id}			{ yylval.sval = strdup(yytext);printf("ID\n"); return ID; }
 {rnum}			{ yylval.rval = atof(yytext);printf("RNUM\n"); return RNUM; }	
-{inum}			{ yylval.ival = atoi(yytext);printf("INU\nM"); return INUM; }	
+{inum}			{ yylval.ival = atoi(yytext);printf("INUM\n"); return INUM; }	
 	
 {whitespace}	        { }                    				
 

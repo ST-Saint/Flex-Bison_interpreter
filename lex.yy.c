@@ -1057,7 +1057,7 @@ YY_RULE_SETUP
 case 36:
 YY_RULE_SETUP
 #line 60 "interpret.l"
-{ yylval.ival = atoi(yytext);printf("INU\nM"); return INUM; }	
+{ yylval.ival = atoi(yytext);printf("INUM\n"); return INUM; }	
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
