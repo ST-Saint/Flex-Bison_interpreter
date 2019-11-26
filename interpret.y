@@ -118,6 +118,8 @@ type:
 
 	| standard_type LSBRACK INUM RSBRACK
 		{
+		if ($3 == FLOAT_TYPE)
+		 sem_error(ARRAY_NON_INTEGER_BOUNDS);
                $$ = (type_struct *) calloc(1, sizeof(type_struct));
                if ($1 == INTEGER_TYPE)
                	$$->name = ARRAY_TYPE_INT;
