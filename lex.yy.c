@@ -591,7 +591,7 @@ char *yytext_ptr;
 #include <stdio.h>
 #include "tree.h"
 #include "type.h" //symtab_type type
-#include "interpret.tab.h"  //interpret.y에서 정의된 토큰 가져옴.
+#include "interpret.tab.h"  
 #line 596 "lex.yy.c"
 #line 597 "lex.yy.c"
 

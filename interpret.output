@@ -10,10 +10,6 @@ Terminals unused in grammar
    NOP
 
 
-State 39 conflicts: 2 shift/reduce
-State 43 conflicts: 1 shift/reduce
-
-
 Grammar
 
     0 $accept: program $end
@@ -84,15 +80,15 @@ Grammar
 
    42 $@7: %empty
 
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+   43 if_statement: IF expression COLON statement $@6 ELIF expression COLON statement $@7 ELSE COLON statement
 
    44 $@8: %empty
 
-   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE COLON statement RSBRACK
+   45 while_statement: WHILE expression COLON statement $@8 ELSE COLON statement
 
    46 $@9: %empty
 
-   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+   47 for_statement: FOR expression IN expression COLON statement $@9 ELSE COLON statement
 
    48 actual_parameter_expression: %empty
    49                            | expression_list
@@ -137,10 +133,10 @@ INT (268) 11 58
 SEMI (269) 4 5 17 19 23 26
 COMA (270) 8 51
 COLON (271) 17 22 23 43 45 47
-LPARENT (272) 20 37 40 43
-RPARENT (273) 20 37 40 43
-LSBRACK (274) 10 39 43 45 47
-RSBRACK (275) 10 39 43 45 47
+LPARENT (272) 20 37 40
+RPARENT (273) 20 37 40
+LSBRACK (274) 10 39
+RSBRACK (275) 10 39
 NOT (276) 62
 DOT (277)
 POSITIVE (278)
@@ -601,14 +597,12 @@ State 39
     LPARENT  shift, and go to state 58
     LSBRACK  shift, and go to state 59
 
-    LPARENT   [reduce using rule 38 (variable)]
-    LSBRACK   [reduce using rule 38 (variable)]
     $default  reduce using rule 38 (variable)
 
 
 State 40
 
-   47 for_statement: FOR . expression IN expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+   47 for_statement: FOR . expression IN expression COLON statement $@9 ELSE COLON statement
 
     ID     shift, and go to state 39
     RNUM   shift, and go to state 60
@@ -628,7 +622,7 @@ State 40
 
 State 41
 
-   43 if_statement: IF . expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+   43 if_statement: IF . expression COLON statement $@6 ELIF expression COLON statement $@7 ELSE COLON statement
 
     ID     shift, and go to state 39
     RNUM   shift, and go to state 60
@@ -648,7 +642,7 @@ State 41
 
 State 42
 
-   45 while_statement: WHILE . expression COLON statement $@8 LSBRACK ELSE COLON statement RSBRACK
+   45 while_statement: WHILE . expression COLON statement $@8 ELSE COLON statement
 
     ID     shift, and go to state 39
     RNUM   shift, and go to state 60
@@ -673,7 +667,6 @@ State 43
 
     LPARENT  shift, and go to state 74
 
-    LPARENT   [reduce using rule 36 (print_statement)]
     $default  reduce using rule 36 (print_statement)
 
 
@@ -919,7 +912,7 @@ State 67
 
 State 68
 
-   47 for_statement: FOR expression . IN expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+   47 for_statement: FOR expression . IN expression COLON statement $@9 ELSE COLON statement
 
     IN  shift, and go to state 88
 
@@ -956,14 +949,14 @@ State 71
 
 State 72
 
-   43 if_statement: IF expression . COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+   43 if_statement: IF expression . COLON statement $@6 ELIF expression COLON statement $@7 ELSE COLON statement
 
     COLON  shift, and go to state 92
 
 
 State 73
 
-   45 while_statement: WHILE expression . COLON statement $@8 LSBRACK ELSE COLON statement RSBRACK
+   45 while_statement: WHILE expression . COLON statement $@8 ELSE COLON statement
 
     COLON  shift, and go to state 93
 
@@ -1120,7 +1113,7 @@ State 87
 
 State 88
 
-   47 for_statement: FOR expression IN . expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+   47 for_statement: FOR expression IN . expression COLON statement $@9 ELSE COLON statement
 
     ID     shift, and go to state 39
     RNUM   shift, and go to state 60
@@ -1196,7 +1189,7 @@ State 91
 
 State 92
 
-   43 if_statement: IF expression COLON . statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+   43 if_statement: IF expression COLON . statement $@6 ELIF expression COLON statement $@7 ELSE COLON statement
 
     ID      shift, and go to state 39
     BBEGIN  shift, and go to state 31
@@ -1220,7 +1213,7 @@ State 92
 
 State 93
 
-   45 while_statement: WHILE expression COLON . statement $@8 LSBRACK ELSE COLON statement RSBRACK
+   45 while_statement: WHILE expression COLON . statement $@8 ELSE COLON statement
 
     ID      shift, and go to state 39
     BBEGIN  shift, and go to state 31
@@ -1317,7 +1310,7 @@ State 101
 
 State 102
 
-   47 for_statement: FOR expression IN expression . COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK
+   47 for_statement: FOR expression IN expression . COLON statement $@9 ELSE COLON statement
 
     COLON  shift, and go to state 111
 
@@ -1345,7 +1338,7 @@ State 105
 
 State 106
 
-   43 if_statement: IF expression COLON statement . $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+   43 if_statement: IF expression COLON statement . $@6 ELIF expression COLON statement $@7 ELSE COLON statement
 
     $default  reduce using rule 41 ($@6)
 
@@ -1354,7 +1347,7 @@ State 106
 
 State 107
 
-   45 while_statement: WHILE expression COLON statement . $@8 LSBRACK ELSE COLON statement RSBRACK
+   45 while_statement: WHILE expression COLON statement . $@8 ELSE COLON statement
 
     $default  reduce using rule 44 ($@8)
 
@@ -1387,7 +1380,7 @@ State 110
 
 State 111
 
-   47 for_statement: FOR expression IN expression COLON . statement $@9 LSBRACK ELSE COLON statement RSBRACK
+   47 for_statement: FOR expression IN expression COLON . statement $@9 ELSE COLON statement
 
     ID      shift, and go to state 39
     BBEGIN  shift, and go to state 31
@@ -1411,16 +1404,16 @@ State 111
 
 State 112
 
-   43 if_statement: IF expression COLON statement $@6 . LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+   43 if_statement: IF expression COLON statement $@6 . ELIF expression COLON statement $@7 ELSE COLON statement
 
-    LPARENT  shift, and go to state 116
+    ELIF  shift, and go to state 116
 
 
 State 113
 
-   45 while_statement: WHILE expression COLON statement $@8 . LSBRACK ELSE COLON statement RSBRACK
+   45 while_statement: WHILE expression COLON statement $@8 . ELSE COLON statement
 
-    LSBRACK  shift, and go to state 117
+    ELSE  shift, and go to state 117
 
 
 State 114
@@ -1432,7 +1425,7 @@ State 114
 
 State 115
 
-   47 for_statement: FOR expression IN expression COLON statement . $@9 LSBRACK ELSE COLON statement RSBRACK
+   47 for_statement: FOR expression IN expression COLON statement . $@9 ELSE COLON statement
 
     $default  reduce using rule 46 ($@9)
 
@@ -1441,28 +1434,7 @@ State 115
 
 State 116
 
-   43 if_statement: IF expression COLON statement $@6 LPARENT . ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
-
-    ELIF  shift, and go to state 119
-
-
-State 117
-
-   45 while_statement: WHILE expression COLON statement $@8 LSBRACK . ELSE COLON statement RSBRACK
-
-    ELSE  shift, and go to state 120
-
-
-State 118
-
-   47 for_statement: FOR expression IN expression COLON statement $@9 . LSBRACK ELSE COLON statement RSBRACK
-
-    LSBRACK  shift, and go to state 121
-
-
-State 119
-
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF . expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+   43 if_statement: IF expression COLON statement $@6 ELIF . expression COLON statement $@7 ELSE COLON statement
 
     ID     shift, and go to state 39
     RNUM   shift, and go to state 60
@@ -1474,36 +1446,98 @@ State 119
 
     variable             go to state 66
     procedure_statement  go to state 67
-    expression           go to state 122
+    expression           go to state 119
     simple_expression    go to state 69
     term                 go to state 70
     factor               go to state 71
 
 
+State 117
+
+   45 while_statement: WHILE expression COLON statement $@8 ELSE . COLON statement
+
+    COLON  shift, and go to state 120
+
+
+State 118
+
+   47 for_statement: FOR expression IN expression COLON statement $@9 . ELSE COLON statement
+
+    ELSE  shift, and go to state 121
+
+
+State 119
+
+   43 if_statement: IF expression COLON statement $@6 ELIF expression . COLON statement $@7 ELSE COLON statement
+
+    COLON  shift, and go to state 122
+
+
 State 120
 
-   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE . COLON statement RSBRACK
+   45 while_statement: WHILE expression COLON statement $@8 ELSE COLON . statement
 
-    COLON  shift, and go to state 123
+    ID      shift, and go to state 39
+    BBEGIN  shift, and go to state 31
+    FOR     shift, and go to state 40
+    IF      shift, and go to state 41
+    WHILE   shift, and go to state 42
+    PRINT   shift, and go to state 43
+    RETURN  shift, and go to state 44
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 45
+    statement            go to state 123
+    print_statement      go to state 48
+    variable             go to state 49
+    procedure_statement  go to state 50
+    if_statement         go to state 51
+    while_statement      go to state 52
+    for_statement        go to state 53
 
 
 State 121
 
-   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK . ELSE COLON statement RSBRACK
+   47 for_statement: FOR expression IN expression COLON statement $@9 ELSE . COLON statement
 
-    ELSE  shift, and go to state 124
+    COLON  shift, and go to state 124
 
 
 State 122
 
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression . COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+   43 if_statement: IF expression COLON statement $@6 ELIF expression COLON . statement $@7 ELSE COLON statement
 
-    COLON  shift, and go to state 125
+    ID      shift, and go to state 39
+    BBEGIN  shift, and go to state 31
+    FOR     shift, and go to state 40
+    IF      shift, and go to state 41
+    WHILE   shift, and go to state 42
+    PRINT   shift, and go to state 43
+    RETURN  shift, and go to state 44
+
+    $default  reduce using rule 35 (statement)
+
+    compound_statement   go to state 45
+    statement            go to state 125
+    print_statement      go to state 48
+    variable             go to state 49
+    procedure_statement  go to state 50
+    if_statement         go to state 51
+    while_statement      go to state 52
+    for_statement        go to state 53
 
 
 State 123
 
-   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE COLON . statement RSBRACK
+   45 while_statement: WHILE expression COLON statement $@8 ELSE COLON statement .
+
+    $default  reduce using rule 45 (while_statement)
+
+
+State 124
+
+   47 for_statement: FOR expression IN expression COLON statement $@9 ELSE COLON . statement
 
     ID      shift, and go to state 39
     BBEGIN  shift, and go to state 31
@@ -1525,47 +1559,39 @@ State 123
     for_statement        go to state 53
 
 
-State 124
-
-   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE . COLON statement RSBRACK
-
-    COLON  shift, and go to state 127
-
-
 State 125
 
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON . statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
+   43 if_statement: IF expression COLON statement $@6 ELIF expression COLON statement . $@7 ELSE COLON statement
 
-    ID      shift, and go to state 39
-    BBEGIN  shift, and go to state 31
-    FOR     shift, and go to state 40
-    IF      shift, and go to state 41
-    WHILE   shift, and go to state 42
-    PRINT   shift, and go to state 43
-    RETURN  shift, and go to state 44
+    $default  reduce using rule 42 ($@7)
 
-    $default  reduce using rule 35 (statement)
-
-    compound_statement   go to state 45
-    statement            go to state 128
-    print_statement      go to state 48
-    variable             go to state 49
-    procedure_statement  go to state 50
-    if_statement         go to state 51
-    while_statement      go to state 52
-    for_statement        go to state 53
+    $@7  go to state 127
 
 
 State 126
 
-   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE COLON statement . RSBRACK
+   47 for_statement: FOR expression IN expression COLON statement $@9 ELSE COLON statement .
 
-    RSBRACK  shift, and go to state 129
+    $default  reduce using rule 47 (for_statement)
 
 
 State 127
 
-   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE COLON . statement RSBRACK
+   43 if_statement: IF expression COLON statement $@6 ELIF expression COLON statement $@7 . ELSE COLON statement
+
+    ELSE  shift, and go to state 128
+
+
+State 128
+
+   43 if_statement: IF expression COLON statement $@6 ELIF expression COLON statement $@7 ELSE . COLON statement
+
+    COLON  shift, and go to state 129
+
+
+State 129
+
+   43 if_statement: IF expression COLON statement $@6 ELIF expression COLON statement $@7 ELSE COLON . statement
 
     ID      shift, and go to state 39
     BBEGIN  shift, and go to state 31
@@ -1587,97 +1613,8 @@ State 127
     for_statement        go to state 53
 
 
-State 128
-
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement . RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK
-
-    RPARENT  shift, and go to state 131
-
-
-State 129
-
-   45 while_statement: WHILE expression COLON statement $@8 LSBRACK ELSE COLON statement RSBRACK .
-
-    $default  reduce using rule 45 (while_statement)
-
-
 State 130
 
-   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE COLON statement . RSBRACK
-
-    RSBRACK  shift, and go to state 132
-
-
-State 131
-
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT . $@7 LSBRACK ELSE COLON statement RSBRACK
-
-    $default  reduce using rule 42 ($@7)
-
-    $@7  go to state 133
-
-
-State 132
-
-   47 for_statement: FOR expression IN expression COLON statement $@9 LSBRACK ELSE COLON statement RSBRACK .
-
-    $default  reduce using rule 47 (for_statement)
-
-
-State 133
-
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 . LSBRACK ELSE COLON statement RSBRACK
-
-    LSBRACK  shift, and go to state 134
-
-
-State 134
-
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK . ELSE COLON statement RSBRACK
-
-    ELSE  shift, and go to state 135
-
-
-State 135
-
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE . COLON statement RSBRACK
-
-    COLON  shift, and go to state 136
-
-
-State 136
-
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON . statement RSBRACK
-
-    ID      shift, and go to state 39
-    BBEGIN  shift, and go to state 31
-    FOR     shift, and go to state 40
-    IF      shift, and go to state 41
-    WHILE   shift, and go to state 42
-    PRINT   shift, and go to state 43
-    RETURN  shift, and go to state 44
-
-    $default  reduce using rule 35 (statement)
-
-    compound_statement   go to state 45
-    statement            go to state 137
-    print_statement      go to state 48
-    variable             go to state 49
-    procedure_statement  go to state 50
-    if_statement         go to state 51
-    while_statement      go to state 52
-    for_statement        go to state 53
-
-
-State 137
-
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement . RSBRACK
-
-    RSBRACK  shift, and go to state 138
-
-
-State 138
-
-   43 if_statement: IF expression COLON statement $@6 LPARENT ELIF expression COLON statement RPARENT $@7 LSBRACK ELSE COLON statement RSBRACK .
+   43 if_statement: IF expression COLON statement $@6 ELIF expression COLON statement $@7 ELSE COLON statement .
 
     $default  reduce using rule 43 (if_statement)

@@ -104,8 +104,7 @@ identifier_list:
 				head = decl_append(head, $1);
 			}
            | identifier_list COMA ID
-			{
-//				
+			{				
 				head = decl_append(head, $3);
 			}
 	  ;
@@ -150,8 +149,6 @@ subprogram_declaration:
 		{
                /* Calculate a function's stack offset */
                stack_offset = calculate_stack_offset(st);
-//               prologue(st->name, stack_offset);
-
                /* Make sure the function var was assigned if class is function_type
                   The procedure case might not fire because there should be a
                   type mismatch when trying to assign a value to the proc's id */
@@ -345,22 +342,22 @@ procedure_statement:
 if_statement:
 			IF expression COLON statement 
 				{}
-			LPARENT ELIF expression COLON statement RPARENT 
+			ELIF expression COLON statement
 				{}
-			LSBRACK ELSE COLON statement RSBRACK
+			ELSE COLON statement
 				{}
 		  ;
 
 while_statement: 
 			WHILE expression COLON statement
 				{}
-			LSBRACK ELSE COLON statement RSBRACK
+			ELSE COLON statement
 				{}
 		  ;
 for_statement:
 			FOR expression IN expression COLON statement
 			{}
-			LSBRACK ELSE COLON statement RSBRACK
+			ELSE COLON statement
 		  ;
 
 actual_parameter_expression:

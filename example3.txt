@@ -1,0 +1,16 @@
+
+mainprog testcode;	
+ int a,b,c;
+ float [10] d;
+ float e; 
+ int [10] f;
+
+begin
+
+a=2;
+b=10;
+c=8;
+
+end
+
+
