@@ -1,0 +1,16 @@
+MAINPROG main;
+	int a,b,c;
+	float[10] x;
+	float i;
+begin
+	a=5;
+	b=3;
+	c=10;
+	i=1.0;
+
+	if i==1.0 : 
+		begin
+			x[i]=i;		//ARRAY_NON_INTEGER_BOUNDS
+			print(x[i]);
+		end
+end
